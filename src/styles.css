@@ -1,24 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.min.css';
 html, body{
-     height: 100%;
- }
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+}
 
 
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .content {
-    background-color: #fff;
-    border: 1px solid transparent;
-    -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.1);
-    width: 1000px;
-    margin: 0px auto;
-    height: 100%;
+
+   border: 1px solid transparent;
+   -webkit-box-shadow: 0 3px 9px rgba(207, 99, 240, 0.1);
+   width: auto;
+   margin: 0px auto;
+   height: 100%;
+}
+.textTitle{
+   color: rgb(192, 65, 209);
 }
 
 .content-form {
-    width: 750px;
-    margin: 0px auto;
-    height: 130%;
+   width: 50vmax;
+   margin: 0px auto;
+   height: 150%;
+   
 }
+.center{
+   align-items: center;
+   align-content: center;
+   text-align: center;
+   
+}
+
 

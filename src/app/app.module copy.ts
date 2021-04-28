@@ -29,18 +29,14 @@ import {MatTableModule} from '@angular/material/table';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { from } from 'rxjs';
 import { RoleService } from './services/roleservice';
-import { UserDataComponent } from './userdata/userdata.component';
-import { CountryService } from './services/CountryService';
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'login' },
-  { path: 'login', component: LoginComponent },// canActivate: [AuthGuard]
-  { path: 'userdata', component: UserDataComponent }
+  { path: '', pathMatch: 'full', redirectTo: 'test' },
+  { path: 'login', component: LoginComponent }// canActivate: [AuthGuard]
 ];
 @NgModule({
     declarations: [
     HomeComponent,
-    LoginComponent,
-    UserDataComponent
+    LoginComponent
   ],
   imports: [
     MatExpansionModule,
@@ -72,7 +68,7 @@ const routes: Routes = [
   ], schemas: [CUSTOM_ELEMENTS_SCHEMA],
   exports: [RouterModule],
   bootstrap: [HomeComponent,],
-  providers: [RoleService,CountryService,
+  providers: [RoleService,
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },
   ]
 })
