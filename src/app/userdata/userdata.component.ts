@@ -17,12 +17,23 @@ export class UserDataComponent implements OnInit {
     displayedColumns: string[] = ['Username', 'Country', 'Description', 'edit'];
     users: any;
     edit = false;
+    isAdmin=false;
+    isObser=false;
+    isFinal=false;
     countrys;
     dataSource: MatTableDataSource<any>;
     ngOnInit(): void {
-        console.log(this.user);
-        this.consultUsers();
-        this.consulCountrys();
+        if (this.user.role.name == "Administrador") {
+            this.consultUsers();
+            this.consulCountrys();
+            this.isAdmin=true;
+        } else {
+            if (this.user.role.name == "Observador") {
+                this.consultUsers();
+                this.isObser=true;
+            }else{this.isFinal=true;
+                this.consulCountrys();}
+        }
     }
 
     editUser(element) {
@@ -40,12 +51,28 @@ export class UserDataComponent implements OnInit {
             this.spinner.hide();
         });
     }
-
+    countrySelect(element){
+        this.user.country=element;
+    }
     consulCountrys() {
         this.countryService.consultCountry().subscribe(resp => {
-            this.countrys=resp;
+            this.countrys = resp;
         }, error => {
             console.log(error);
+        });
+    }
+    isFormInvalid(){
+        if(!this.user.country.name || !this.user.description){return true};
+    }
+    save(){
+        this.spinner.show()
+        this.authService.upDateDescription(this.user).subscribe(resp=>{
+            this.edit=false;
+            this.spinner.hide();                     
+        },error=>{
+            console.log(error);
+            this.spinner.hide();
+            this.edit=false;
         });
     }
 }
